@@ -1,0 +1,25 @@
+service:
+  name: employees-managment
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  get-employees:
+    handler: src/services/GetEmployees.handler
+    events:
+      - http:
+          method: get
+          path: /api/v1/employees
+  create-employee:
+    handler: src/services/CreateEmployee.handler
+    events:
+      - http:
+          method: post
+          path: /api/v1/employees
